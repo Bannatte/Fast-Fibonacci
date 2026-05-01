@@ -1,0 +1,16 @@
+name: Build and Run C++
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Compile
+      run: g++ -std=c++17 main.cpp -o run
+
+    - name: Run program
+      run: ./run
