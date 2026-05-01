@@ -2,7 +2,25 @@
 #include <iostream>
 using namespace std;
 
-/* 
+struct Zsqrt5 {
+  int a;
+  int b;
+
+  Zsqrt5 operator*(const Zsqrt5& other) const {
+    return {a * other.a + 5 * b * other.b, a * other.b + b * other.a};
+  }
+
+  Zsqrt5& operator*=(const Zsqrt5& other) {
+    int na = a * other.a + 5 * b * other.b;
+    int nb = a * other.b + b * other.a;
+
+    a = na;
+    b = nb;
+
+    return *this;
+  }
+};
+
 long long div_sqrt_five (long long num)
 {
   long long low = num / 3;
@@ -25,7 +43,6 @@ long long div_sqrt_five (long long num)
 
   return upp;
 }
-*/
 
 int fast_fib (int num)
 {
@@ -38,16 +55,15 @@ int fast_fib (int num)
     highest_bit--;
   }
 
-  vector<long long> p = {1};
-  vector<long long> q = {1};
+  Zsqrt5 initial = {1, 1};
+  vector<Zsqrt5> list = {initial};
 
   for (int i = 0; i <= highest_bit; i++) {
-    p.push_back(p[i] * p[i] + 5 * q[i] * q[i]);
-    q.push_back(2 * p[i] * q[i]);
+    Zsqrt5 next = list[i] * list[i];
+    list.push_back(next);
   }
   
-  long long p_tot = 1;
-  long long q_tot = 0;
+  Zsqrt5 power = {1, 0};
   for (int j = highest_bit; 0 <= j; j--) {
     int b = (num >> j) & 1;
 
@@ -55,12 +71,10 @@ int fast_fib (int num)
       continue;
     }
 
-    long long p_tot_new = p[j] * p_tot + q[j] * q_tot * 5;
-    q_tot = q[j] * p_tot + p[j] * q_tot;
-    p_tot = p_tot_new;
+    power *= list[j];
   }
 
-  long long fib = (q_tot) >> num;
+  long long fib = (div_sqrt_five(power.a) + power.b) >> num;
 
   if (num % 2 == 1) {
     fib++;
