@@ -2,6 +2,7 @@
 #include <iostream>
 using namespace std;
 
+/* 
 long long div_sqrt_five (long long num)
 {
   long long low = num / 3;
@@ -24,6 +25,7 @@ long long div_sqrt_five (long long num)
 
   return upp;
 }
+*/
 
 int fast_fib (int num)
 {
@@ -58,7 +60,7 @@ int fast_fib (int num)
     p_tot = p_tot_new;
   }
 
-  long long fib = (div_sqrt_five(p_tot) + q_tot) >> num;
+  long long fib = (q_tot) >> num;
 
   if (num % 2 == 1) {
     fib++;
