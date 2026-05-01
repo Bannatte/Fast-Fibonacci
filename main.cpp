@@ -25,8 +25,8 @@ long long div_sqrt_five (long long num)
   return upp;
 }
 
-int fast_fib (int num) {
-
+int fast_fib (int num)
+{
   if (num <= 0) {
     return 0;
   }
@@ -44,8 +44,8 @@ int fast_fib (int num) {
     q.push_back(2 * p[i] * q[i]);
   }
   
-  int p_tot = 1;
-  int q_tot = 0;
+  long long p_tot = 1;
+  long long q_tot = 0;
   for (int j = highest_bit; 0 <= j; j--) {
     int b = (num >> j) & 1;
 
@@ -53,7 +53,7 @@ int fast_fib (int num) {
       continue;
     }
 
-    int p_tot_new = p[j] * p_tot + q[j] * q_tot * 5;
+    long long p_tot_new = p[j] * p_tot + q[j] * q_tot * 5;
     q_tot = q[j] * p_tot + p[j] * q_tot;
     p_tot = p_tot_new;
   }
@@ -65,4 +65,12 @@ int fast_fib (int num) {
   }
 
   return (int)fib;
+}
+
+int main()
+{
+  for (int k = 1; k <= 10; k++) {
+    fib = fast_fib(k)
+    cout << "k: " << k << ", fib: " << fib
+  }
 }
