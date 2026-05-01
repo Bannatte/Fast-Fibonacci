@@ -70,7 +70,7 @@ int fast_fib (int num)
 int main()
 {
   for (int k = 1; k <= 10; k++) {
-    fib = fast_fib(k)
-    cout << "k: " << k << ", fib: " << fib
+    int fib = fast_fib(k);
+    cout << "k: " << k << ", fib: " << fib << endl;
   }
 }
