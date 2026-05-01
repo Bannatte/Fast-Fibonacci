@@ -26,13 +26,18 @@ long long div_sqrt_five (long long num)
 }
 
 int fast_fib (int num) {
+
+  if (num <= 0) {
+    return 0;
+  }
+  
   int highest_bit = 31;
   while (((num >> highest_bit) & 1) == 0) {
     highest_bit--;
   }
 
-  vector<int> p = {1};
-  vector<int> q = {1};
+  vector<long long> p = {1};
+  vector<long long> q = {1};
 
   for (int i = 0; i <= highest_bit; i++) {
     p.push_back(p[i] * p[i] + 5 * q[i] * q[i]);
