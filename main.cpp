@@ -2,15 +2,15 @@
 #include <iostream>
 using namespace std;
 
-int div_sqrt_five (int num)
+long long div_sqrt_five (long long num)
 {
-  int low = num / 3;
-  int upp = num / 2;
+  long long low = num / 3;
+  long long upp = num / 2;
 
   long long target = num * num;
   while (low <= upp) 
   {
-    int mid = (low + upp) / 2;
+    long long mid = (low + upp) / 2;
     long long value = 5 * mid * mid;
 
     if (value == target) {
@@ -53,11 +53,11 @@ int fast_fib (int num) {
     p_tot = p_tot_new;
   }
 
-  int fib = (div_sqrt_five(p_tot) + q_tot) >> num;
+  long long fib = (div_sqrt_five(p_tot) + q_tot) >> num;
 
   if (num % 2 == 1) {
     fib++;
   }
 
-  return fib;
+  return (int)fib;
 }
