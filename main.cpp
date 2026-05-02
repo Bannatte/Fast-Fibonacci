@@ -28,33 +28,21 @@ int fast_fib (int num)
     return 0;
   }
 
-  Zsqrt5 initial = {1, 1};
-  vector<Zsqrt5> list = {initial};
-  Zsqrt5 power = {1, 0};
+  Zsqrt5 two_power = {1, 1};
+  Zsqrt5 tot_power = {1, 0};
 
-  int temp;
-  
-  temp = num;
+  int temp = num;
   int i = 0;
   while (temp > 0) {
-    Zsqrt5 next = list[i] * list[i];
-    list.push_back(next);
-
-    temp >>= 1;
-    i++;
-  }
-
-  temp = num;
-  int j = 0;
-  while (temp > 0) {
+    
     int b = temp & 1;
-
     if (b) {
-      power *= list[j];
+      tot_power *= two_power;
     }
 
+    two_power *= two_power;
     temp >>= 1;
-    j++;
+    i++;
   }
 
   // power = (1 + sqrt(5))^n
