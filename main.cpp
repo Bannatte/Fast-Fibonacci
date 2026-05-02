@@ -7,11 +7,11 @@ struct Zsqrt5 {
   long long b;
 
   Zsqrt5& operator*=(const Zsqrt5& other) {
-    const int oa = other.a;
-    const int ob = other.b;
+    const long long oa = other.a;
+    const long long ob = other.b;
     
-    int na = a * oa + 5 * b * ob;
-    int nb = a * ob + b * oa;
+    long long na = a * oa + 5 * b * ob;
+    long long nb = a * ob + b * oa;
 
     a = na;
     b = nb;
