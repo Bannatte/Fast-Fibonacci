@@ -1,18 +1,17 @@
-#include <vector>
+#pragma GCC optimize("O3")
 #include <iostream>
 using namespace std;
 
 struct Zsqrt5 {
-  int a;
-  int b;
-
-  Zsqrt5 operator*(const Zsqrt5& other) const {
-    return {a * other.a + 5 * b * other.b, a * other.b + b * other.a};
-  }
+  long long a;
+  long long b;
 
   Zsqrt5& operator*=(const Zsqrt5& other) {
-    int na = a * other.a + 5 * b * other.b;
-    int nb = a * other.b + b * other.a;
+    const int oa = other.a;
+    const int ob = other.b;
+    
+    int na = a * oa + 5 * b * ob;
+    int nb = a * ob + b * oa;
 
     a = na;
     b = nb;
@@ -33,8 +32,7 @@ int fast_fib (int num)
   int temp = num;
   while (temp > 0) {
     
-    int b = temp & 1;
-    if (b) {
+    if (temp & 1) {
       tot_power *= two_power;
     }
 
