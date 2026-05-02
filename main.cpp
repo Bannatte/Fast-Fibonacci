@@ -1,5 +1,6 @@
 #include <vector>
 #include <iostream>
+#include <cmath>
 using namespace std;
 
 struct Zsqrt5 {
@@ -20,29 +21,6 @@ struct Zsqrt5 {
     return *this;
   }
 };
-
-long long div_sqrt_five (long long num)
-{
-  long long low = num / 3;
-  long long upp = num / 2;
-
-  long long target = num * num;
-  while (low <= upp) 
-  {
-    long long mid = (low + upp) / 2;
-    long long value = 5 * mid * mid;
-
-    if (value == target) {
-      return mid;
-    } else if (value < target) {
-      low = mid + 1;
-    } else {
-      upp = mid - 1;
-    }
-  }
-
-  return upp;
-}
 
 int fast_fib (int num)
 {
@@ -74,7 +52,7 @@ int fast_fib (int num)
     power *= list[j];
   }
 
-  long long fib = (div_sqrt_five(power.a) + power.b) >> num;
+  long long fib = ((power.a / sqrt(5)) + power.b) >> num;
 
   if (num % 2 == 1) {
     fib++;
