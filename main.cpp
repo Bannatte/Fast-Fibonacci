@@ -35,7 +35,7 @@ int fast_fib (int num)
   int temp;
   
   temp = num;
-  int i = 0
+  int i = 0;
   while (temp > 0) {
     Zsqrt5 next = list[i] * list[i];
     list.push_back(next);
