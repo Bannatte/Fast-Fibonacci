@@ -52,7 +52,14 @@ int fast_fib (int num)
     power *= list[j];
   }
 
-  long long fib = ((power.a / sqrt(5)) + power.b) >> num;
+  // power = (1 + sqrt(5))^n
+  // fib = power / (sqrt(5) * 2^n)
+  //     = (a + bsqrt(5)) / (sqrt(5) * 2^n)
+  //     = (b + a / sqrt(5)) * 2^-n
+  //     = (b + a / sqrt(5)) >> n
+  double sqrt5 = 2.23606797749979;
+  long long fib = (long long)(power.b + power.a / sqrt5);
+  fib >>= num;
 
   if (num % 2 == 1) {
     fib++;
