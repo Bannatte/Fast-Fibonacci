@@ -31,7 +31,6 @@ int fast_fib (int num)
   Zsqrt5 tot_power = {1, 0};
 
   int temp = num;
-  int i = 0;
   while (temp > 0) {
     
     int b = temp & 1;
@@ -41,22 +40,13 @@ int fast_fib (int num)
 
     two_power *= two_power;
     temp >>= 1;
-    i++;
   }
 
-  // power = (1 + sqrt(5))^n
-  // fib = power / (sqrt(5) * 2^n)
-  //     = (a + bsqrt(5)) / (sqrt(5) * 2^n)
-  //     = (b + a / sqrt(5)) * 2^-n
-  //     = (b + a / sqrt(5)) >> n
-  double sqrt5 = 2.23606797749979;
-  long long fib = (long long)(tot_power.b + tot_power.a / sqrt5);
+  static constexpr long double inv_sqrt5 = 0.4472135954999579L; // 1 / sqrt(5)
+  long long fib = (long long)(tot_power.b + (long double)tot_power.a * inv_sqrt5);
   fib >>= num;
 
-  if (num % 2 == 1) {
-    fib++;
-  }
-
+  fib += (num & 1);
   return (int)fib;
 }
 
