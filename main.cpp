@@ -1,6 +1,5 @@
 #include <vector>
 #include <iostream>
-#include <cmath>
 using namespace std;
 
 struct Zsqrt5 {
@@ -51,7 +50,7 @@ int fast_fib (int num)
   //     = (b + a / sqrt(5)) * 2^-n
   //     = (b + a / sqrt(5)) >> n
   double sqrt5 = 2.23606797749979;
-  long long fib = (long long)(power.b + power.a / sqrt5);
+  long long fib = (long long)(tot_power.b + tot_power.a / sqrt5);
   fib >>= num;
 
   if (num % 2 == 1) {
