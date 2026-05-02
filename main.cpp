@@ -49,7 +49,7 @@ long long fast_fib (int num)
 
 int main()
 {
-  for (int k = 1; k <= 10; k++) {
+  for (int k = 1; k <= 50; k++) {
     int fib = fast_fib(k);
     std::cout << "k: " << k << ", fib: " << fib << '\n';
   }
