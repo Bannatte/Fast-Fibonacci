@@ -1,6 +1,5 @@
 #pragma GCC optimize("O3")
 #include <iostream>
-using namespace std;
 
 struct Zsqrt5 {
   long long a;
@@ -20,7 +19,7 @@ struct Zsqrt5 {
   }
 };
 
-int fast_fib (int num)
+long long fast_fib (int num)
 {
   if (num <= 0) {
     return 0;
@@ -45,14 +44,14 @@ int fast_fib (int num)
   fib >>= num;
 
   fib += (num & 1);
-  return (int)fib;
+  return fib;
 }
 
 int main()
 {
   for (int k = 1; k <= 10; k++) {
     int fib = fast_fib(k);
-    cout << "k: " << k << ", fib: " << fib << '\n';
+    std::cout << "k: " << k << ", fib: " << fib << '\n';
   }
   return 0;
 }
