@@ -27,29 +27,34 @@ int fast_fib (int num)
   if (num <= 0) {
     return 0;
   }
-  
-  int highest_bit = 31;
-  while (((num >> highest_bit) & 1) == 0) {
-    highest_bit--;
-  }
 
   Zsqrt5 initial = {1, 1};
   vector<Zsqrt5> list = {initial};
+  Zsqrt5 power = {1, 0};
 
-  for (int i = 0; i <= highest_bit; i++) {
+  int temp;
+  
+  temp = num;
+  int i = 0
+  while (temp > 0) {
     Zsqrt5 next = list[i] * list[i];
     list.push_back(next);
-  }
-  
-  Zsqrt5 power = {1, 0};
-  for (int j = highest_bit; 0 <= j; j--) {
-    int b = (num >> j) & 1;
 
-    if (b != 1) {
-      continue;
+    temp >>= 1;
+    i++;
+  }
+
+  temp = num;
+  int j = 0;
+  while (temp > 0) {
+    int b = temp & 1;
+
+    if (b) {
+      power *= list[j];
     }
 
-    power *= list[j];
+    temp >>= 1;
+    j++;
   }
 
   // power = (1 + sqrt(5))^n
@@ -72,6 +77,7 @@ int main()
 {
   for (int k = 1; k <= 10; k++) {
     int fib = fast_fib(k);
-    cout << "k: " << k << ", fib: " << fib << endl;
+    cout << "k: " << k << ", fib: " << fib << '\n';
   }
+  return 0;
 }
